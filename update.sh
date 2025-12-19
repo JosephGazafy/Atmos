@@ -1,24 +1,16 @@
 #!/bin/bash
-# ATMOS CORE v3.0 - SECURE UPDATE & AUTO-REGISTRY
+# ATMOS CORE v3.0 - PEER INITIALIZATION
 ./logo.sh
-echo -e "\e[1;33m🔄 INITIATING MANIFEST SYNC...\e[0m"
+echo -e "\e[1;33m🔄 SYNCING TO MASTER ANCHOR...\e[0m"
 
-FILES=("sovereign.sh" "logo.sh" "main.go" "sovereign_init.py" "slough.sh" "welcome.txt" "registry.sh" "update.sh" "autopilot.sh" "status.sh" "killswitch.sh" "watchdog.sh" "alert_sentinel.sh" "invite.sh")
+# Pull files...
+# [Previous file sync logic here]
 
-for file in "${FILES[@]}"; do
-    echo -n "📡 Syncing $file... "
-    curl -s -LO "https://raw.githubusercontent.com/JosephGazafy/Atmos/main/$file"
-    echo -e "\e[1;32m[DONE]\e[0m"
-done
-
-chmod +x *.sh
-
-# Perform the Registry Handshake
+# THE HANDSHAKE TRIGGER
+chmod +x registry.sh
 ./registry.sh
 
 if [ -f "welcome.txt" ]; then
     cat welcome.txt
 fi
-
-echo -e "\e[1;32m✅ NODE FULLY SYNCHRONIZED AND REGISTERED.\e[0m"
 

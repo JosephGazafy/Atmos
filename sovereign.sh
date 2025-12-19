@@ -5,11 +5,11 @@
 case "$1" in
     "autopilot") ./autopilot.sh ;;
     "status") ./status.sh ;;
-    "invite") chmod +x invite.sh && ./invite.sh ;;
+    "invite") ./invite.sh ;;
+    "check") chmod +x mesh_check.sh && ./mesh_check.sh ;;
     "mesh") ./alert_sentinel.sh ;;
-    "tunnel") ./log_tunnel.sh ;;
     "update") ./update.sh ;;
     "shadow") history -c && chmod 400 * ;;
-    *) echo "Usage: ./sovereign.sh {autopilot|status|invite|mesh|tunnel|update|shadow}" ;;
+    *) echo "Usage: ./sovereign.sh {autopilot|status|invite|check|mesh|update|shadow}" ;;
 esac
 
