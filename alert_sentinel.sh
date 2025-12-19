@@ -1,28 +1,18 @@
 #!/bin/bash
 # ATMOS CORE v3.0 - HEARTBEAT ALERT SENTINEL
-
-WEBHOOK="PASTE_YOUR_DISCORD_WEBHOOK_URL_HERE"
+WEBHOOK=https://discord.com/api/webhooks/1451503705953140890/KsrxKw4py4o0SCPFC4q02Xbf59ndVnlPEKoEqftnn0A93zWwSoNbjfnskvWB8DPzw884
 THRESHOLD=1.05
 
 echo "📡 Alert Sentinel Active. Monitoring HWM Variance..."
 
-# Execute main.go and pipe its output to a loop for analysis
 CGO_ENABLED=0 go run main.go | while read -r line; do
     echo "$line"
-    # Extract the variance value from the Heartbeat line
     VARIANCE=$(echo "$line" | grep -oP 'Δ: \K[0-9.]+')
-    
     if [ ! -z "$VARIANCE" ]; then
         if (( $(echo "$VARIANCE > $THRESHOLD" | bc -l) )); then
-            NODE_ID=$(md5sum <<< "$(hostname)" | cut -c 1-8)
-            TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-            
-            echo -e "\e[1;31m🛑 HWM BREACH DETECTED: $VARIANCE\e[0m"
-            
-            # Send the Webhook Alert
+            termux-notification --title "⚠️ ATMOS BREACH" --content "HWM Variance: $VARIANCE"
             curl -s -X POST -H "Content-Type: application/json" \
-                -d "{\"content\": \"🚨 **HWM BREACH ALERT**\n**Node ID:** \`$NODE_ID\`\n**Variance:** \`$VARIANCE\`\n**Time:** \`$TIMESTAMP\`\n**Status:** Network Instability Detected.\"}" \
-                "$WEBHOOK" > /dev/null
+                -d "{\"content\": \"🚨 **HWM BREACH**: Variance $VARIANCE\"}" "$WEBHOOK" > /dev/null
         fi
     fi
 done
