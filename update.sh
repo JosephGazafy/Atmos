@@ -1,5 +1,5 @@
 #!/bin/bash
-# ATMOS CORE v3.0 - SECURE UPDATE & GREETING
+# ATMOS CORE v3.0 - SECURE UPDATE & AUTO-REGISTRY
 ./logo.sh
 echo -e "\e[1;33m🔄 INITIATING MANIFEST SYNC...\e[0m"
 
@@ -13,12 +13,12 @@ done
 
 chmod +x *.sh
 
-# Display the Greeting if welcome.txt exists
+# Perform the Registry Handshake
+./registry.sh
+
 if [ -f "welcome.txt" ]; then
-    echo ""
     cat welcome.txt
-    echo ""
 fi
 
-echo -e "\e[1;32m✅ NODE FULLY SYNCHRONIZED.\e[0m"
+echo -e "\e[1;32m✅ NODE FULLY SYNCHRONIZED AND REGISTERED.\e[0m"
 
