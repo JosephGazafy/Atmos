@@ -1,0 +1,28 @@
+---
+
+### **2. The Git Ignore (`.gitignore`)**
+This prevents temporary files and logs from cluttering your repository.
+
+`nano .gitignore`
+```text
+# Go binaries and workspace files
+atmos-sentinel
+go.sum
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment and logs
+.bash_history
+*.log
+.DS_Store
+
+# Temporary Termux files
+storage/

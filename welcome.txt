@@ -1,0 +1,8 @@
+==========================================
+   ATMOS CORE v3.0: AUTHORIZED JUSTICE
+==========================================
+1. Monitor: ./sovereign.sh mesh
+2. Shield:  ./sovereign.sh shield
+3. Exit:    ./slough.sh
+==========================================
+
