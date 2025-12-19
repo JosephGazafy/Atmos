@@ -12,11 +12,12 @@ case "$1" in
     "geo")
         ./geo_test.sh ;;
     "tunnel")
-        ./tunnel.sh ;;
+        chmod +x log_tunnel.sh && ./log_tunnel.sh ;;
     "update")
         ./update.sh ;;
     "shadow")
-        history -c && chmod 400 * && echo "✅ Stealth Active." ;;
+        history -c && rm -f ~/.bash_history
+        chmod 400 * && echo "✅ Stealth Active." ;;
     *)
         echo "Usage: ./sovereign.sh {boot|mesh|shield|geo|tunnel|update|shadow}" ;;
 esac
