@@ -1,18 +1,19 @@
 #!/bin/bash
-# ATMOS CORE v3.0 - AUTOPILOT
+# ATMOS CORE v3.0 - MASTER AUTOPILOT
 chmod +x *.sh
 
 ./logo.sh
-echo -e "\e[1;35m🚀 ENGAGING AUTOPILOT...\e[0m"
+echo -e "\e[1;35m🚀 ENGAGING FULL-SPECTRUM AUTOPILOT...\e[0m"
 
-# Start the Watchdog in the background
+# 1. Start Background Security
 ./watchdog.sh > /dev/null 2>&1 &
-echo "✅ Watchdog: ACTIVE"
-
-# Start the Scuttle Timer in the background
 ./scuttle.sh > /dev/null 2>&1 &
-echo "✅ Security Timer: ENGAGED"
 
-# Handover to the Sentinel
+# 2. Start Acoustic Shield (Python)
+python3 acoustic_shield.py > /dev/null 2>&1 &
+echo "✅ Acoustic Shield: ACTIVE"
+
+# 3. Launch Sentinel
+echo "✅ US-East Anchor: 1.1.1.1"
 ./sovereign.sh mesh
 
