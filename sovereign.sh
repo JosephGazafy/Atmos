@@ -1,15 +1,26 @@
 #!/bin/bash
-# ATMOS CORE v3.0 - MASTER CONTROLLER
-./logo.sh
+# ATMOS CORE v3.0 - MASTER CONTROLLER (PATCHED)
 
 case "$1" in
-    "autopilot") ./autopilot.sh ;;
-    "status") ./status.sh ;;
-    "invite") ./invite.sh ;;
-    "check") chmod +x mesh_check.sh && ./mesh_check.sh ;;
-    "mesh") ./alert_sentinel.sh ;;
-    "update") ./update.sh ;;
-    "shadow") history -c && chmod 400 * ;;
-    *) echo "Usage: ./sovereign.sh {autopilot|status|invite|check|mesh|update|shadow}" ;;
+    "autopilot")
+        ./bio_gate.sh
+        if [ $? -eq 0 ]; then
+            ./autopilot.sh
+        else
+            echo "Access Denied: Biometric mismatch."
+            exit 1
+        fi
+        ;;
+    "mesh")
+        ./main
+        ;;
+    "invite")
+        ./invite.sh
+        ;;
+    "clean")
+        ./cleanup.sh
+        ;;
+    *)
+        echo "Usage: atmos [autopilot|mesh|invite|clean]"
+        ;;
 esac
-

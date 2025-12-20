@@ -17,3 +17,9 @@ echo "✅ Acoustic Shield: ACTIVE"
 echo "✅ US-East Anchor: 1.1.1.1"
 ./sovereign.sh mesh
 
+# ... existing logic ...
+# 4. Engage Lock Screen Dashboard
+chmod +x mesh_notify.sh
+./mesh_notify.sh
+echo "✅ Lock Screen Dashboard: ENGAGED"
+

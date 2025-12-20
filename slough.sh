@@ -1,22 +1,18 @@
 #!/bin/bash
-# ATMOS CORE v3.0 - EMERGENCY SHADOW-WIPE
-./logo.sh
-echo -e "\e[1;31m🔥 INITIATING TOTAL DATA RELINQUISHMENT...\e[0m"
+# ATMOS CORE v3.0 - TOTAL PURGE PROTOCOL
 
-# 1. Kill all background daemons
-pkill -f "watchdog.sh"
-pkill -f "scuttle.sh"
-pkill -f "alert_sentinel.sh"
+echo -e "\e[1;31m[!] INITIATING TOTAL SYSTEM PURGE...\e[0m"
 
-# 2. Shred temporary files and logs
-rm -rf $TMPDIR/*
-rm -f ~/.bash_history
-rm -f ~/Atmos/*.log
-touch ~/.bash_history
+# 1. Kill background mesh services
+pkill -f "main"           # Sentinel
+pkill -f "play -n"        # Acoustic Shield
+pkill -f "ghost_heartbeat" # Decoy Heartbeat
 
-# 3. Lock the vault
-chmod 000 ~/Atmos/.atmos_vault*
+# 2. Scrub volatile artifacts
+rm -rf ~/Atmos/tmp_* rm -rf ~/Atmos/*.jpg
+history -c && history -w  # Clear session command history
 
-echo -e "\e[1;32m✅ SESSION SHREDDED. TRACES REMOVED.\e[0m"
-exit 0
+# 3. Release hardware
+termux-wake-unlock
 
+echo -e "\e[1;32m[✓] ALL SERVICES TERMINATED. SESSION CLEAN.\e[0m"
