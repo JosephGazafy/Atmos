@@ -1,4 +1,8 @@
 #!/bin/bash
+while true; do
+#!/bin/bash
+while true; do
+#!/bin/bash
 # ATMOS CORE v3.1 - HEARTBEAT JITTER (Visual Deterrent)
 
 # Colors for the Cipher-Stream
@@ -24,3 +28,5 @@ while true; do
     sleep $SLEEP_TIME
 done
 
+done
+done
