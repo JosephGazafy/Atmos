@@ -1,6 +1,6 @@
 #!/bin/bash
 # ATMOS CORE v3.1 - KINETIC KILL-SWITCH
-THRESHOLD=25.0 # Sensitivity (Adjust based on hardware)
+THRESHOLD=28.0
 
 echo "[$(date)] Kinetic Listener Engaged. Monitoring for high-G events..."
 

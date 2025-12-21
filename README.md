@@ -1,4 +1,4 @@
-# ATMOS CORE v3.1 | FINAL SECURITY POSTURE REPORT
+# ATMOS CORE v3.1 (Unitary 2.1) | FINAL SECURITY POSTURE REPORT
 **Node Identity:** Atlas-01  
 **Operator:** Sovereign-Operator  
 **Sync Date:** 2025-12-20
