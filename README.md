@@ -1,27 +1,35 @@
-# ATMOS CORE v3.1 (Unitary 2.1) | FINAL SECURITY POSTURE REPORT
-**Node Identity:** Atlas-01  
-**Operator:** Sovereign-Operator  
-**Sync Date:** 2025-12-20
+# Constitutional Logic Engine (Atmos-Termux Edition)
 
----
+A high-performance, mobile-first logic engine that evaluates legal cases through Constitutional "Gates." This system integrates exhaustive linguistic analysis with NVIDIA Nemotron AI interfacing.
 
-## 🛡️ DEFENSE SUMMARY
-| Layer | Protocol | Status | Threshold |
-| :--- | :--- | :--- | :--- |
-| **Logic Root** | NDK Sentinel v3.1 | **ACTIVE** | Native JNI |
-| **Persistence**| Termux Boot Engine | **ARMED** | Self-Healing |
-| **Acoustic** | Ultrasonic Shield | **RESONATING**| 19.5kHz Adaptive |
-| **Kinetic** | High-G Kill-Switch | **CALIBRATED** | 28.0 m/s² |
-| **Failsafe** | Dead Man's Switch | **ACTIVE** | 7-Day Window |
 
----
 
-## 🛠️ MAINTENANCE CMDS
-- **Check-In:** `./pulse_checkin.sh`
-- **Audit:** `sha256sum -c .manifest.sig`
-- **Wipe:** `./slough_all.sh`
+## 🚀 Features
 
----
+- **Constitutional Logic Gates**: Automated evaluation of 4th, 5th, 6th, 8th, and 14th Amendment violations.
+- **Exhaustive Lexicon**: A complete alphabetical database of English verbs and adjectives tagged via NLTK.
+- **Search & Define**: Integrated semantic search to validate legal justifications (e.g., *indefatigable*).
+- **NVIDIA Nemotron Integration**: A specialized connector for NVIDIA's NeMo LLM framework.
+- **Persistence Layer**: SQLite-based ledger to log every judicial decision with timestamps.
+- **RESTful API**: Flask-powered endpoints to allow external triggers via Atmos or local Android intents.
 
-## 📜 MASTER SEED PHRASE
-> **origin-anchor-Judah-Joseph-180-phase-deciduous-stride-equitable-coefficient-archetypal-mesh-vivus-philo-navi-ping**
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Environment** | Termux (Android) |
+| **Language** | Python 3.11+ |
+| **Web Framework** | Flask |
+| **NLP** | NLTK (Natural Language Toolkit) |
+| **AI Framework** | NVIDIA Nemotron (via Submodule) |
+| **Database** | SQLite3 |
+
+## 📦 Installation
+
+1. **Clone the repo with submodules:**
+   ```bash
+   git clone --recursive [https://github.com/YOUR_USERNAME/YOUR_REPO.git](https://github.com/YOUR_USERNAME/YOUR_REPO.git)
+   cd YOUR_REPO
+
+## 🔄 Auto-Start
+To enable auto-start, add './start_stack.sh' to your ~/.bashrc file.

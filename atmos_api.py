@@ -1,25 +1,15 @@
-# Add this function to your helper section
-def get_stats():
-    conn = sqlite3.connect('cases.db')
-    c = conn.cursor()
-    # Count occurrences of each action_scope
-    c.execute("SELECT action_scope, COUNT(*) FROM case_logs GROUP BY action_scope")
-    rows = c.fetchall()
-    conn.close()
-    return {action: count for action, count in rows}
+from flask import Flask, request, jsonify
+import sqlite3
+from datetime import datetime
 
-# Add this route to your Flask app
+app = Flask(__name__)
+
+# Your logic engine and DB functions go here...
+# [Paste your ConstitutionalLogicEngine class here]
+
 @app.route('/stats', methods=['GET'])
 def stats():
-    try:
-        data = get_stats()
-        total_cases = sum(data.values())
-        return jsonify({
-            "status": "online",
-            "total_processed": total_cases,
-            "breakdown": data,
-            "system_health": "stable" if total_cases > 0 else "awaiting_data"
-        })
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify({"status": "online", "anchor": "Europe-9.9.9.9"})
 
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
