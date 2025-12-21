@@ -33,3 +33,5 @@ A high-performance, mobile-first logic engine that evaluates legal cases through
 
 ## 🔄 Auto-Start
 To enable auto-start, add './start_stack.sh' to your ~/.bashrc file.
+[![Constitutional Engine CI](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci_test.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions)
+[![Constitutional Engine CI](https://github.com/josephgazafy/Atmos/actions/workflows/ci_test.yml/badge.svg)](https://github.com/JosephGazafy/Atmos/actions)
