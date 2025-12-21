@@ -1,0 +1,15 @@
+cat <<EOF > build.sh
+#!/bin/bash
+echo "Cleaning up environment..."
+rm -f bridge
+echo "Building Indefatigable Go Bridge (Static/No-CGo)..."
+CGO_ENABLED=0 go build -o bridge main.go
+if [ -f ./bridge ]; then
+    chmod +x bridge
+    echo "Done. Executable created: ./bridge"
+else
+    echo "Build failed."
+fi
+EOF
+chmod +x build.sh
+
