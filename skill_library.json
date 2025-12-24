@@ -1,5 +1,19 @@
 {
     "self_evolution_count": 1,
-    "skills": ["Path_Res", "Bio_Shield_1.58b", "Steelman_Protocol"],
-    "learning_targets": ["Fast_Scan", "Peer_Anchor"]
+    "skills": [
+        "Path_Res",
+        "Bio_Shield_1.58b",
+        "Steelman_Protocol"
+    ],
+    "learning_targets": [
+        "Fast_Scan",
+        "Peer_Anchor"
+    ],
+    "wmd_policy_active": true,
+    "threat_signatures": [
+        "Illicit_Fentanyl",
+        "Piperidone_Precursor",
+        "Chemical_Weapon_Threat"
+    ],
+    "defense_protocol": "WMD_NONPROLIFERATION"
 }
