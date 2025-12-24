@@ -1,8 +1,8 @@
 {
     "hr_input": 62,
-    "psi_index": 83.33,
+    "psi_index": 1.0,
     "ternary_state": 1,
-    "hwm_variance": -0.01,
+    "hwm_variance": 0.0,
     "status": "ELEVATED_GRACE",
     "sigma": 1.414,
     "energy_saved_pct": 97.56,
