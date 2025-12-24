@@ -1,9 +1,10 @@
 {
-    "self_evolution_count": 1,
+    "self_evolution_count": 2,
     "skills": [
         "Path_Res",
         "Bio_Shield_1.58b",
-        "Steelman_Protocol"
+        "Steelman_Protocol",
+        "Stress_Resilience_v1"
     ],
     "learning_targets": [
         "Fast_Scan",
