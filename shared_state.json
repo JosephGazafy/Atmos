@@ -1,7 +1,10 @@
 {
-    "hr_input": 72, 
-    "psi_index": 1.0, 
-    "ternary_state": 0, 
+    "hr_input": 72,
+    "psi_index": 8.33,
+    "ternary_state": 0,
     "hwm_variance": 0.0,
-    "status": "ELEVATED_GRACE"
+    "status": "ELEVATED_GRACE",
+    "energy_saved_pct": 97.56,
+    "efficiency_status": "41.0x Faster",
+    "sigma": 1.242
 }
