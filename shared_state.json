@@ -2,9 +2,9 @@
     "hr_input": 72,
     "psi_index": 8.33,
     "ternary_state": 0,
-    "hwm_variance": 0.0,
-    "status": "GLOBAL_MESH_SYNCED",
+    "hwm_variance": -0.01,
+    "status": "ELEVATED_GRACE",
+    "sigma": 1.242,
     "energy_saved_pct": 97.56,
-    "efficiency_status": "41.0x Faster",
-    "sigma": 1.242
+    "efficiency_status": "41.0x Faster"
 }

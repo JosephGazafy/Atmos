@@ -2,7 +2,7 @@
 import json, os, time, subprocess
 
 def sync_all():
-    base_dir = os.path.expanduser("~/Atmos")
+    base_dir = os.path.expanduser("/data/data/com.termux/files/home/Atmos")
     state_p = f"{base_dir}/shared_state.json"
     lib_p = f"{base_dir}/skill_library.json"
     

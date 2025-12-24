@@ -1,6 +1,6 @@
 import json, os, time
 def run():
-    state_p = os.path.expanduser("~/Atmos/shared_state.json")
+    state_p = os.path.expanduser("/data/data/com.termux/files/home/Atmos/shared_state.json")
     while True:
         try:
             with open(state_p, 'r+') as f:

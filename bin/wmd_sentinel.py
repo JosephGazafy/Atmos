@@ -2,7 +2,7 @@
 import json, os
 
 def update_threat_definitions():
-    lib_path = os.path.expanduser("~/Atmos/skill_library.json")
+    lib_path = os.path.expanduser("/data/data/com.termux/files/home/Atmos/skill_library.json")
     with open(lib_path, 'r+') as f:
         lib = json.load(f)
         # SAGE Evolution: Incorporating WMD Policy (EO Dec 15, 2025)
