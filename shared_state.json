@@ -1,6 +1,6 @@
 {
     "hr_input": 72,
-    "psi_index": 0.99,
+    "psi_index": 8.33,
     "ternary_state": 0,
     "hwm_variance": -0.01,
     "status": "ELEVATED_GRACE",
