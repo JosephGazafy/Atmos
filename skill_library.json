@@ -1,12 +1,13 @@
 {
-    "self_evolution_count": 4,
+    "self_evolution_count": 5,
     "skills": [
         "Path_Res",
         "Bio_Shield_1.58b",
         "Steelman_Protocol",
         "Stress_Resilience_v1",
         "Trend_Prediction_v1",
-        "LSH_Attention_v1"
+        "LSH_Attention_v1",
+        "Clinical_Reasoning_WMD"
     ],
     "learning_targets": [
         "Fast_Scan",
