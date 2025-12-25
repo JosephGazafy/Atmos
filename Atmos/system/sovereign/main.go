@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -10,11 +9,11 @@ import (
 
 type AtmosData struct {
 	Altitude float64 `json:"altitude"`
+	Pressure float64 `json:"pressure"`
 	Density  float64 `json:"density"`
 }
 
 func main() {
-	// Absolute path to the data file
 	dataPath := "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json"
 
 	file, err := os.Open(dataPath)
@@ -24,16 +23,26 @@ func main() {
 	}
 	defer file.Close()
 
+	var totalPressure float64
+	var count int
 	scanner := bufio.NewScanner(file)
-	fmt.Println("🚀 Scanning Atmos Interoperability Layer...")
+
+	fmt.Println("🚀 Analyzing Atmospheric History...")
 
 	for scanner.Scan() {
 		var d AtmosData
 		if err := json.Unmarshal(scanner.Bytes(), &d); err == nil {
-			if d.Density < 0.5 {
-				fmt.Printf("⚠️  Alert: Low Density (%.4f) detected at %.0fm\n", d.Density, d.Altitude)
-			}
+			totalPressure += d.Pressure
+			count++
 		}
+	}
+
+	if count > 0 {
+		avgPressure := totalPressure / float64(count)
+		fmt.Printf("📊 Records Analyzed: %d\n", count)
+		fmt.Printf("🌡️  Average System Pressure: %.2f Pa\n", avgPressure)
+	} else {
+		fmt.Println("⚠️  No records found to analyze.")
 	}
 	fmt.Println("✅ Scan Complete.")
 }
