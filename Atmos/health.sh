@@ -1,10 +1,7 @@
-
-
-
 #!/data/data/com.termux/files/usr/bin/bash
 PROJ_DIR="/data/data/com.termux/files/home/Atmos/Atmos/Atmos"
-export PYTHONPATH="$PYTHONPATH:$PROJ_DIR/src"
 cd "$PROJ_DIR"
+# ... rest of the script ...
 
 echo "--- 🔍 Atmos Sovereignty Health Check ---"
 
