@@ -1,13 +1,10 @@
 #!/bin/bash
-INTERVAL=3600 # 1 Hour in seconds
-
-echo "🚀 Atmos Auto-Pilot Initialized."
-echo "Press [Ctrl+C] to stop background task."
-
+echo "🔄 Restoring Original Autopilot Logic..."
 while true; do
-    echo "[$(date)] ⚡ Auto-Sweep Triggered..."
-    make sweep > /dev/null 2>&1
-    echo "[$(date)] ✅ Sweep & Sync Complete. Sleeping for $INTERVAL seconds."
-    sleep $INTERVAL
+    # Run the physics engine (Original Function)
+    PYTHONPATH=src python -m atmos.main -a 2000 -j
+    # Run the doctor check (Investigation Function)
+    python bin/atmos_doctor.py
+    sleep 3600
 done
 
