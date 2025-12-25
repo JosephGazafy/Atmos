@@ -15,3 +15,9 @@ def update_threat_definitions():
 
 if __name__ == "__main__":
     update_threat_definitions()
+
+def medical_reasoning_audit(pulse, trend):
+    # Logic derived from OpenMed SFT Dataset
+    if pulse > 120 and trend > 10:
+        return "CRITICAL_PHYSIOLOGICAL_CRIME_DETECTED"
+    return "NOMINAL"
