@@ -17,10 +17,14 @@ def main():
         required=True
     )
 
-    # Parse arguments
+    def main():
+    parser = argparse.ArgumentParser(description="Atmos: Sovereign Physics Engine")
+    parser.add_argument("-a", "--altitude", type=float, required=True)
+    parser.add_argument("-j", "--json", action="store_true", help="Export to JSON") # Ensure this is here
+    
     args = parser.parse_args()
+    # ... (rest of the logic from earlier steps)
 
-    try:
         # Execute the core logic
         pressure = calculate_pressure(args.altitude)
         

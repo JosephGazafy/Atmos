@@ -14,6 +14,19 @@ type AtmosData struct {
 }
 
 func main() {
+// Inside main()
+cwd, _ := os.Getwd()
+// Search priorities: Local, then parent, then project root
+locations := []string{
+    filepath.Join(cwd, "data.json"),
+    filepath.Join(cwd, "../../data.json"), 
+    "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json",
+}
+o
+
+
+
+
 // Replace the previous path logic with this finer approach
 cwd, _ := os.Getwd()
 // We check multiple possible locations to ensure interoperability
