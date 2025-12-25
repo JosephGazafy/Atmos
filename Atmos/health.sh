@@ -26,3 +26,25 @@ git add .
 git commit -m "Auto-update: System health check and data sync"
 git push origin Master --force-with-lease
 
+# --- 📲 Enhanced Sovereign Notification Logic ---
+TOKEN="YOUR_TELEGRAM_BOT_TOKEN"
+CHAT_ID="YOUR_CHAT_ID"
+
+# Calculate metrics for the notification
+ALERT_COUNT=$(wc -l < alerts.log 2>/dev/null || echo "0")
+DASHBOARD_MSG=$(cat welcome.txt)
+
+# Construct a finer, multi-line message
+FINAL_MSG="🚀 ATMOS UPDATE
+------------------------
+$DASHBOARD_MSG
+------------------------
+⚠️ CRITICAL ALERTS: $ALERT_COUNT"
+
+# Send to Telegram
+curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
+     -d chat_id="$CHAT_ID" \
+     -d text="$FINAL_MSG" > /dev/null
+
+echo "📲 Sovereign transmission complete: $ALERT_COUNT alerts reported."
+
