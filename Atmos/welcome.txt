@@ -1,8 +1,8 @@
 =========================================
       ATMOS SOVEREIGNTY DASHBOARD
 =========================================
-Last Sync:  Thu Dec 25 01:35:30 CST 2025
+Last Sync:  Thu Dec 25 01:36:11 CST 2025
 Status:     OPERATIONAL
-Data Count: 2
+Data Count: 13
 =========================================
 Avg Pressure: N/A
