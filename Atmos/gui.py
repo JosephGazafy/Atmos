@@ -1,52 +1,43 @@
-import os
-import time
-import json
+import os, time, json, subprocess
 
-def clear():
-    os.system('clear')
+def get_git_status():
+    try:
+        status = subprocess.check_output(["git", "status", "-s"], stderr=subprocess.DEVNULL).decode()
+        return "⚠️  Unsynced Changes" if status else "✅ Cloud Synced"
+    except:
+        return "❌ Git Error"
 
-def get_data():
+def draw_gui():
     path = "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json"
     try:
         with open(path, 'r') as f:
-            lines = f.readlines()
-            return [json.loads(l) for l in lines]
+            data = [json.loads(l) for l in f.readlines()]
     except:
-        return []
+        data = []
 
-def draw_gui():
-    data = get_data()
     latest = data[-1] if data else {"altitude": 0, "density": 0, "pressure": 0, "timestamp": "N/A"}
+    os.system('clear')
     
-    clear()
-    print("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
-    print("┃                 ATMOS SOVEREIGN GUI v2.0                  ┃")
-    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
-    
-    print(f"  [ LIVE TELEMETRY ]")
-    print(f"  🛰️  Altitude:  {latest['altitude']:>10} m")
-    print(f"  🌡️  Density:   {latest['density']:>10.4f} kg/m³")
-    print(f"  🌀 Pressure:  {latest['pressure']:>10.2f} Pa")
-    print(f"  🕒 Timestamp: {latest['timestamp'][:19]}")
-    print("  " + "─"*55)
-    
-    print(f"  [ HISTORICAL STATS ]")
-    print(f"  📊 Total Records: {len(data)}")
-    avg_p = sum(d['pressure'] for d in data) / len(data) if data else 0
-    print(f"  📉 Avg Pressure:  {avg_p:>10.2f} Pa")
-    print("  " + "─"*55)
-
-    print(f"  [ SYSTEM ALERTS ]")
+    print(f"┏━━━━ ATMOS SOVEREIGN INTERFACE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓")
+    print(f"┃ SYSTEM: {get_git_status():<25} | UTC: {time.strftime('%H:%M:%S')} ┃")
+    print(f"┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫")
+    print(f"┃ [1] PHYSICS TELEMETRY                                     ┃")
+    print(f"┃     Altitude: {latest['altitude']:>8} m      Density: {latest['density']:>8.4f}  ┃")
+    print(f"┃     Pressure: {latest['pressure']:>8.2f} Pa     Time: {latest['timestamp'][11:19]}    ┃")
+    print(f"┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫")
+    print(f"┃ [2] DATA ANALYSIS                                         ┃")
+    print(f"┃     Total Records: {len(data):<6} | Logs: /Atmos/Atmos/Atmos/   ┃")
+    print(f"┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫")
+    print(f"┃ [3] SECURITY & ALERTS                                     ┃")
     if os.path.exists("alerts.log"):
-        with open("alerts.log", 'r') as f:
-            alerts = f.readlines()[-3:] # Show last 3 alerts
-            for a in alerts:
-                print(f"  ⚠️  {a.strip()[:50]}")
+        with open("alerts.log", "r") as f:
+            last_alert = f.readlines()[-1:]
+            msg = last_alert[0].strip() if last_alert else "No Recent Anomalies"
+            print(f"┃     LAST: {msg[:47]:<47} ┃")
     else:
-        print("  ✅ No active anomalies detected.")
-    
-    print("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
-    print(" [ Ctrl+C to Exit ] | [ Run 'make sweep' in background to update ]")
+        print(f"┃     Status: All Systems Nominal                           ┃")
+    print(f"┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛")
+    print("  COMMANDS: [atmos-check] [make sweep] [make search D=0.x]")
 
 if __name__ == "__main__":
     try:
@@ -54,5 +45,5 @@ if __name__ == "__main__":
             draw_gui()
             time.sleep(2)
     except KeyboardInterrupt:
-        print("\nExiting GUI...")
+        print("\nGUI Terminated.")
 
