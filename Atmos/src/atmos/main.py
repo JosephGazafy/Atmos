@@ -1,42 +1,37 @@
 import argparse
-import sys
-from atmos.core import calculate_pressure
+import json
+import os
+from datetime import datetime
 
 def main():
-    # Setup the argument parser for a professional CLI feel
-    parser = argparse.ArgumentParser(
-        description="Atmos: Peerless Atmospheric Calculations for Termux",
-        epilog="Example: atmos --altitude 1000"
-    )
-    
-    # Add an argument for altitude
-    parser.add_argument(
-        "-a", "--altitude", 
-        type=float, 
-        help="Altitude in meters above sea level",
-        required=True
-    )
-
-    def main():
     parser = argparse.ArgumentParser(description="Atmos: Sovereign Physics Engine")
-    parser.add_argument("-a", "--altitude", type=float, required=True)
-    parser.add_argument("-j", "--json", action="store_true", help="Export to JSON") # Ensure this is here
+    parser.add_argument("-a", "--altitude", type=float, required=True, help="Altitude in meters")
+    parser.add_argument("-j", "--json", action="store_true", help="Export data to JSON")
     
     args = parser.parse_args()
-    # ... (rest of the logic from earlier steps)
-
-        # Execute the core logic
-        pressure = calculate_pressure(args.altitude)
+    
+    # Physics Calculation (Standard Atmosphere Model)
+    temp = 288.15 - (0.0065 * args.altitude)
+    pressure = 101325 * (temp / 288.15)**5.25588
+    density = pressure / (287.05 * temp)
+    
+    print(f"--- Atmos Physics Output ---")
+    print(f"Altitude: {args.altitude}m")
+    print(f"Density:  {density:.4f} kg/m³")
+    
+    if args.json:
+        data = {
+            "timestamp": datetime.now().isoformat(),
+            "altitude": args.altitude,
+            "pressure": pressure,
+            "density": density
+        }
         
-        # Finer output formatting
-        print(f"\n--- Atmos Results ---")
-        print(f"Altitude: {args.altitude:>10} m")
-        print(f"Pressure: {pressure:>10.2f} Pa")
-        print(f"---------------------\n")
-        
-    except Exception as e:
-        print(f"Error in calculation: {e}", file=sys.stderr)
-        sys.exit(1)
+        # Absolute path for Termux stability
+        path = "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json"
+        with open(path, "a") as f:
+            f.write(json.dumps(data) + "\n")
+        print(f"✅ Data logged to {path}")
 
 if __name__ == "__main__":
     main()

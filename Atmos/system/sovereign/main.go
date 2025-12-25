@@ -1,3 +1,4 @@
+
 package main
 
 import (
@@ -5,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"path/filepath"
 )
 
 type AtmosData struct {
@@ -14,45 +14,27 @@ type AtmosData struct {
 }
 
 func main() {
-// Inside main()
-cwd, _ := os.Getwd()
-// Search priorities: Local, then parent, then project root
-locations := []string{
-    filepath.Join(cwd, "data.json"),
-    filepath.Join(cwd, "../../data.json"), 
-    "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json",
+	// Absolute path to the data file
+	dataPath := "/data/data/com.termux/files/home/Atmos/Atmos/Atmos/data.json"
+
+	file, err := os.Open(dataPath)
+	if err != nil {
+		fmt.Printf("❌ Data Link Broken: %v\n", err)
+		return
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	fmt.Println("🚀 Scanning Atmos Interoperability Layer...")
+
+	for scanner.Scan() {
+		var d AtmosData
+		if err := json.Unmarshal(scanner.Bytes(), &d); err == nil {
+			if d.Density < 0.5 {
+				fmt.Printf("⚠️  Alert: Low Density (%.4f) detected at %.0fm\n", d.Density, d.Altitude)
+			}
+		}
+	}
+	fmt.Println("✅ Scan Complete.")
 }
-o
-
-
-
-
-// Replace the previous path logic with this finer approach
-cwd, _ := os.Getwd()
-// We check multiple possible locations to ensure interoperability
-locations := []string{
-    filepath.Join(cwd, "data.json"),           // Root
-    filepath.Join(cwd, "../../data.json"),    // Nested depth 2
-    filepath.Join(cwd, "../../../data.json"), // Nested depth 3
-}
-
-var file *os.File
-var err error
-for _, loc := range locations {
-    file, err = os.Open(loc)
-    if err == nil {
-        fmt.Printf("✅ Data Link Established: %s\n", loc)
-        break
-    }
-}
-
-if err != nil {
-    fmt.Println("❌ Data Link Broken: Please run 'atmos -a 1000 -j' first.")
-    return
-}
-
-
-
-
-
 
