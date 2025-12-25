@@ -26,6 +26,13 @@ def draw_gui():
             data = [json.loads(l) for l in f.readlines()]
     except: data = []
 
+# --- CONSTITUTIONAL REPAIR HOOK ---
+def trigger_repair():
+    subprocess.run(["bash", "repair.sh"])
+
+# Inside draw_gui(), if logic fails, we can display:
+# print(f"┃ {RED}CONSTITUTION VULNERABLE - RUNNING REPAIR...{RESET} ┃")
+
     latest = data[-1] if data else {"altitude": 0, "density": 0, "pressure": 0, "timestamp": "N/A"}
     os.system('clear')
     
