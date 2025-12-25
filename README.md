@@ -1,4 +1,4 @@
-# Constitutional Logic Engine (Atmos-Termux Edition)
+## Constitutional Logic Engine (Atmos-Termux Edition)
 
 A high-performance, mobile-first logic engine that evaluates legal cases through Constitutional "Gates." This system integrates exhaustive linguistic analysis with NVIDIA Nemotron AI interfacing.
 
