@@ -1,8 +1,6 @@
-*.keystore
-*.bin
-Volatile/
-ShadowMount/
-bin/
-*.aar
-*.so
-.buildozer/
+.venv/
+__pycache__/
+*.log
+*.json
+*.png
+SUMMARY.md
