@@ -1,5 +1,5 @@
 {
-    "self_evolution_count": 5,
+    "self_evolution_count": 6,
     "skills": [
         "Path_Res",
         "Bio_Shield_1.58b",
@@ -7,7 +7,8 @@
         "Stress_Resilience_v1",
         "Trend_Prediction_v1",
         "LSH_Attention_v1",
-        "Clinical_Reasoning_WMD"
+        "Clinical_Reasoning_WMD",
+        "Mesh_Optimization_v1"
     ],
     "learning_targets": [
         "Fast_Scan",
