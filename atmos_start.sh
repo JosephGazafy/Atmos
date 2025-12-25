@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-# ATMOS ATLAS-01 MASTER STARTUP v490.0
+# ATMOS ATLAS-01 CLI-ANCHOR STARTUP v570.0
 
-echo ">> INITIALIZING 2026 SOVEREIGN ENVIRONMENT..."
+echo ">> INITIALIZING 2026 SOCIAL CORE..."
 
-# 1. Bind TTY and Identity
+# 1. Environment Setup
 export GPG_TTY=$(tty)
-export PYTHONPATH=$PYTHONPATH:~/Atmos/src
-export SOVEREIGN_FPR=$(gpg --list-secret-keys --with-colons | grep fpr | cut -d: -f10 | head -n 1)
+HYDRATOR_DIR="/data/data/com.termux/files/home/Atmos/rescue_social_core/Analysis Cross-Platforms/Scripts - Twitter, Reddit, Instagram, TikTok/twitter/hydrator"
+export PYTHONPATH="$PYTHONPATH:$HYDRATOR_DIR"
 
-# 2. Run Diagnostic
-python3 ~/Atmos/bin/atmos_doctor.py
+# 2. Launching the CLI Sub-command
+echo ">> LAUNCHING TWITTER HYDRATOR (SUB-COMMAND: CLI)..."
+cd "$HYDRATOR_DIR"
 
-# 3. Start Autopilot Sentinel
-echo ">> LAUNCHING AUTOPILOT..."
-python3 ~/Atmos/src/atmos/main.py --mode sentinel --veracity-check
-
+# We use 'cli' to satisfy the parser requirements
+python3 main.py cli

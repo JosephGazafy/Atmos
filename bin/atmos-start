@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "[!] INITIALIZING ATMOS SENTINEL AUTOPILOT..."
+cd "/data/data/com.termux/files/home/Atmos/rescue_social_core/Analysis Cross-Platforms/Scripts - Twitter, Reddit, Instagram, TikTok/twitter/hydrator/"
+
+# Fire the verified bypass logic
+python3 trigger_harvest.py
